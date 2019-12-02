@@ -1,14 +1,15 @@
 /*
+Simple +8 UTC GPS Clock
 LedMatrix(FC16)+ NEO-6M + SMD UNO + UNO SCREW SHIELD = SOMEWHAT CHEAPEST/SIMPLE STRATUM 1 NON-DST +8 PRECISION GPS CLOCK
 Devoloped by http://srotogargees.business.site/
 
- ** Version 3 (GPS) **
+ ** Version 3.1 (+8 UTC GPS Clock) **
  
- - 12-H AM/PM version
- - Note: Only CLOCK display demo.
+ - 12-H AM/PM version omitted <10 Hour leading Zero 
+ - Note: CLOCK only display demo.
  - PRECISION = +/- 1 Second on lock vs MCU processing speed + display latency.
- - Clock Accuracy compared to NTP >= +/- 500 Millis ~ 1 Second.
- - Allow few minutes,place GPS near windows for fast sat lock.
+ - HI-Clock Accuracy compared to NTP >= +/- 500 Millis ~ 1 Second.
+ - Allow few minutes,place GPS near windows for fast sat lock. 1 to 5 min for more accurate adjustments (auto)
  - Non-DST +8 GMT/UTC Timezone covers 4 Billion population.
  - Irkutsk,Shanghai,Beijing,Taipei,Hong Kong,Manila,Kuala Lumpur,Singapore,Makassar & Perth.
  - NEO_TX->PIN 10((UNOSS*RX)only rec),NEO_RX->UNOSS*TX can be ignored(not transmitting to sat).
@@ -50,11 +51,11 @@ char Time [] = "00:00:00";
 
 void setup(void)
 {
-  //Serial.begin(9600);
-  serialgps.begin(9600); 
-  P.begin();
-  P.setIntensity(0);
-  P.setTextAlignment(PA_CENTER);
+  //Serial.begin(9600);			// experimented on serial monitor before migrating to FC-16 & TFT
+  serialgps.begin(9600); 		// Neo SwSerial init
+  P.begin();				// Parola lib init
+  P.setIntensity(0);			// Lowest LED brightness
+  P.setTextAlignment(PA_CENTER);	// Centered display
   P.print("GPS CLOCK");
    delay(ONE_SEC);
 }
@@ -67,9 +68,19 @@ void adjustTime( NeoGPS::time_t & dt )
   dt = seconds;                     // convert seconds structure back to date/time
 } 
 
-void loop(){
-if (gps.available( serialgps )) {fix = gps.read();fixCount++;
-if (fixCount >= 1){fixCount = 0; if (fix.valid.time)adjustTime(fix.dateTime);printGPSdata();}}}
+void loop()
+	
+{
+	if (gps.available( serialgps ))
+	{	
+		fix = gps.read();fixCount++;
+		if (fixCount >= 1)
+		{	
+			fixCount = 0;	
+			if (fix.valid.time)adjustTime(fix.dateTime);printGPSdata();
+		}
+	}
+}
 
 void printGPSdata()
 { 
@@ -78,7 +89,7 @@ void printGPSdata()
   if (fix.valid.time&&fix.dateTime.hours==0||h==0) {h=12;}
   m=fix.dateTime.minutes;
   s=fix.dateTime.seconds;
-  
+ 	if(h<10){Time[0] = ' ';}else	//omits hours only <10 leading zero, make efficient for solar power batteries..useless data
 	Time[0]  = h / 10 +'0';  
 	Time[1]  = h % 10 +'0';
 	Time[3]  = m  / 10 +'0';
