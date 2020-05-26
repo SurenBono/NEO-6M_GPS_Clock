@@ -119,11 +119,11 @@ void decode_UTC_Encoded() {
 	if(counter==7){zone_hours=-7;     }//UTC="-7:00";
 	if(counter==8){zone_hours=-6;     }//UTC="-6:00";
 	if(counter==9){zone_hours=-5;     }//UTC="-5:00";
-    if(counter==10){zone_hours=-4.5;  }//UTC="-4:30";
+        if(counter==10){zone_hours=-4.5;  }//UTC="-4:30";
 	if(counter==11){zone_hours=-4;    }//UTC="-4:00";
 	if(counter==12){zone_hours=-3.5;  }//UTC="-3:30";
 	if(counter==13){zone_hours=-3;    }//UTC="-3:00";
-    if(counter==14){zone_hours=-2.5;  }//UTC="-2:30";
+        if(counter==14){zone_hours=-2.5;  }//UTC="-2:30";
 	if(counter==15){zone_hours=-2;    }//UTC="-2:00";
 	if(counter==16){zone_hours=-1;    }//UTC="-1:00";
 	if(counter==17){zone_hours=0;     }//UTC="+0:00";
@@ -149,7 +149,7 @@ void decode_UTC_Encoded() {
 	if(counter==37){zone_hours=+12;   }//UTC="+12:00";
 	if(counter==38){zone_hours=+12.75;}//UTC="+12:45";
 	if(counter==39){zone_hours=+13;   }//UTC="+13:00";
-    if(counter==40){zone_hours=+13.75;}//UTC="+13:45";
+        if(counter==40){zone_hours=+13.75;}//UTC="+13:45";
 	if(counter==41){zone_hours=+14;   }//UTC="+14:00";
 	
 	if(counter>41&&counter==42){counter=1;zone_hours=-12;}//UTC="-12:00";Wrapping around rotational ends ,where Highest counter meets lowest 
@@ -177,7 +177,7 @@ void decodeTimezone()
 	//(1/38TZ)UTC+14,3 Region
 	if(LAT>=  0      && LAT <= 4      && LNG >= -160.5 && LNG <= -158    ||LAT>= -6      && LAT <=  4     && LNG >= -158    && LNG <= -150     ||LAT>= -12      && LAT <= -6      && LNG >= -155    && LNG <= -150    ){ zone_hours=+14L;}//UTC+14.R1/3
 
-  //UTC+13:45
+        //UTC+13:45
   
 	//(2/38TZ)UTC+13,5 Region
 	if(LAT>= -6      && LAT <= -2.5   && LNG >= -179   && LNG <= -158    ||LAT>= -10     && LAT <= -6     && LNG >= -179    && LNG <= -169     ||LAT>= -15      && LAT <= -10     && LNG >= -174    && LNG <= -171    ){ zone_hours=+13L;}//UTC+13.R1-3/5
@@ -257,7 +257,7 @@ void decodeTimezone()
 	if(LAT>= -60     && LAT <=  0     && LNG >=  97.5  && LNG <=  112.5  ||LAT>=  3      && LAT <=  4.7    && LNG >=  99     && LNG <=  100.5  ){ zone_hours=+7L;}//UTC+7.25-26/26R	
 	
 	//(13/38TZ)UTC+06:30,6 Region
-    if(LAT>=  25.54  && LAT <=  28.8  && LNG >=  97    && LNG <=  98.7   ||LAT>=  20     && LAT <=  25.54  && LNG <=  98.7   && LNG >=  92.5   ||LAT>=  20      && LAT <=  22.26  && LNG <=  101    && LNG >= 98.7   ){ zone_hours=+6.5L;}//UTC+06:30.R9,1-3/6		
+        if(LAT>=  25.54  && LAT <=  28.8  && LNG >=  97    && LNG <=  98.7   ||LAT>=  20     && LAT <=  25.54  && LNG <=  98.7   && LNG >=  92.5   ||LAT>=  20      && LAT <=  22.26  && LNG <=  101    && LNG >= 98.7   ){ zone_hours=+6.5L;}//UTC+06:30.R9,1-3/6		
 	if(LAT>=  15     && LAT <=  20    && LNG >=  87.4  && LNG <=  92.5   ||LAT>=  9.92   && LAT <=  20     && LNG <=  98.7   && LNG >=  97.5   ||LAT>= -15      && LAT <= -11.5   && LNG <=  97.5   && LNG >= 96.5   ){ zone_hours=+6.5L;}//UTC+06:30.R9,4-6/6
 	
 	//(14/38TZ)UTC+6,17 Region
@@ -335,7 +335,7 @@ void decodeTimezone()
 	//(24/38TZ)UTC±0,20+1 Region *DST tested addition ,auto-decoding for UNITED KINGDOM during certain months
 	if(LAT>=  76    && LAT <=  79.2   && LNG <= -15    && LNG >= -22.5   ||LAT>=  63     && LAT <=  90     && LNG <=  7.5    && LNG >= -7.5    ||LAT>=  63      && LAT <=  67     && LNG <= -7.5    && LNG >= -25     ){ zone_hours=+0L;}//UTC±0.R1-3/20
 	if(LAT>=  60    && LAT <=  63     && LNG <=  3.7   && LNG >= -7.5    && fix.dateTime.month >=4         && fix.dateTime.month <=10          ||LAT>=  54      && LAT <=  60     && LNG <=  3.7    && LNG >= -11.25  && fix.dateTime.month >=4 && fix.dateTime.month <=10  ||LAT>=  50   && LAT <=  54  && LNG <=  2.3  && LNG >= -11.25  && fix.dateTime.month >=4 && fix.dateTime.month <=10 ){ zone_hours=+1L;}//UTC+1  * DST Example
-    if(LAT>=  60    && LAT <=  63     && LNG <=  3.7   && LNG >= -7.5    && fix.dateTime.month <=3         && fix.dateTime.month >=11          ||LAT>=  54      && LAT <=  60     && LNG <=  3.7    && LNG >= -11.25  && fix.dateTime.month <=3 && fix.dateTime.month >=11  ||LAT>=  50   && LAT <=  54  && LNG <=  2.3  && LNG >= -11.25  && fix.dateTime.month <=3 && fix.dateTime.month >=11 ){ zone_hours=+0L;}//else its UTC±0.R4,5,7/20
+        if(LAT>=  60    && LAT <=  63     && LNG <=  3.7   && LNG >= -7.5    && fix.dateTime.month <=3         && fix.dateTime.month >=11          ||LAT>=  54      && LAT <=  60     && LNG <=  3.7    && LNG >= -11.25  && fix.dateTime.month <=3 && fix.dateTime.month >=11  ||LAT>=  50   && LAT <=  54  && LNG <=  2.3  && LNG >= -11.25  && fix.dateTime.month <=3 && fix.dateTime.month >=11 ){ zone_hours=+0L;}//else its UTC±0.R4,5,7/20
 	if(LAT>=  54    && LAT <=  57.5   && LNG <=  7.5   && LNG >=  3.5    ||LAT>=  45     && LAT <=  50     && LNG <= -5      && LNG >= -7.5    ||LAT>=  0       && LAT <=  20     && LNG <= -5      && LNG >= -18.75  ){ zone_hours=+0L;}//UTC±0.R6,8,9/20	
 	if(LAT>=  0     && LAT <=  25     && LNG <=  0     && LNG >= -5      ||LAT>=  14     && LAT <=  21     && LNG <=  4.2    && LNG >=  0      ||LAT>=  6       && LAT <=  14     && LNG <=  1.96   && LNG >=  0      ){ zone_hours=+0L;}//UTC±0.R10-12/20	
 	if(LAT>=  0     && LAT <=  6      && LNG <=  6     && LNG >=  0      ||LAT>=  0      && LAT <=  2.1    && LNG <=  7.5    && LNG >=  6      ||LAT>= -1.5     && LAT <=  0      && LNG <=  5.2    && LNG >= -7.5    ){ zone_hours=+0L;}//UTC±0.R13-15/20	
@@ -356,7 +356,7 @@ void decodeTimezone()
 	if(LAT>=  14    && LAT <=  18    && LNG <= -30     && LNG >= -37.5   ||LAT>= -4      && LAT <= -14     && LNG <= -22.5   && LNG >= -37.5   ||LAT>= -12      && LAT <= -4      && LNG <= -22.5   && LNG >= -34     ){ zone_hours=-2L;}//UTC-2.R7-9/11	
 	if(LAT>= -60    && LAT <= -12    && LNG <= -22.5   && LNG >= -37.5   ||LAT>= -55.5   && LAT <= -52.7   && LNG <= -37.5   && LNG >= -45     ){ zone_hours= -2L;}//-2 zone_hours.R10-11/11
 
-    // UTC-02:30
+        // UTC-02:30
  
 	//(27/38TZ)UTC-3,23 Region
 	if(LAT>= -9.3   && LAT <=  90    && LNG <= -37.5   && LNG >= -52.5   ||LAT>=  79.2   && LAT <=  83     && LNG <= -52.5   && LNG >= -61     ||LAT>=  79.2    && LAT <=  81     && LNG <= -61     && LNG >= -67.5  ){ zone_hours=-3L;}//UTC-3.R1-3/23
@@ -379,7 +379,7 @@ void decodeTimezone()
 	if(LAT>= -18.5  && LAT <=  1.3   && LNG <= -67.5   && LNG >= -69     ||LAT>= -27.5   && LAT <= -21.5  && LNG <= -54     && LNG >= -59      ||LAT>= -60      && LAT <= -52.7   && LNG <= -52.5   && LNG >= -67.5  ){ zone_hours=-4L;}//UTC-4.R8,14,15/18
 	if(LAT>= -25    && LAT <= -18.5  && LNG <= -67.5   && LNG >= -71.7   ||LAT>= -31     && LAT <= -25    && LNG <= -67.5   && LNG >= -81.6    ||LAT>= -49      && LAT <= -31     && LNG <= -71.7   && LNG >= -75.5  ){ zone_hours=-4L;}//UTC-4.R16-18/18
 
-  //UTC-04:30
+        //UTC-04:30
   
 	//(30/38TZ)UTC-5,15 Region
 	if(LAT>=  79.2  && LAT <=  90    && LNG <= -67.5   && LNG >= -85     ||LAT>=  81     && LAT <=  83    && LNG <= -61     && LNG >= -67.5    ||LAT>=  76      && LAT <=  79.2   && LNG <= -73.2   && LNG >= -85   ){ zone_hours=-5L;}//UTC-5.R1-3/15
