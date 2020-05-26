@@ -1,16 +1,25 @@
 # NEO-6M-GPS-TIME
 NEO-6M-GPS-CLOCK-DATE-LAT-LONG-SPEED-ALTITUDE-SAT USED
 
-- Tested on chinese SMD ATMEL UNO
-- Hard soldered 3 wire underside of UNO for Neo-6M with MCUFRIEND TFT display
-- 3v3 to Neo VCC
-- GND Neo to any common UNO GND
-- NEO can only receive data ,NEO TX to UNO RX
-- Unplug tx wire while upload to avoid upload error
-- Download include drivers to library
-- Feel free to try on other display..Led Matrix..etc
-- Automatically adjust according to device located timezone via neofix drivers calculation 
-- GMT/UTP input can be ignored
+- Tested on chinese SMD ATMEL UNO later the codes grew and only worked on MEGA2560
+- Added Uno expansion board for extra headers wiring reasons
+- 3v3 to Neo VCC,5V to encoder.
+- GND Neo to any common UNO/MEGA GND.
+- NEO can only receive data ,NEO TX to UNO/MEGA Software Serial RX.So only 3 wire used.(VCC,GND,TX)
+- Download any nessecary libraries for module example:TFT,NMEA,Adafruit_GFX...etc
+- Feel free to try on other display..Led Matrix,serial monitor..etc
+- Standard 24h UTC GPS time broadcast are local coded to 12h AM/PM format.
+- Later added Rotary Encoder to cycle 40 timezone.
+- Later added AUTO DECODE Timezone/DST by valid coordinate on lo-resolution squared Mapping , Rotary cycle if slow.
+- Once a valid coordinate decode timezone ,Timezone are memorised and runs without a need for coordinate validation until a new    Timezone are found.
+- Check diagram supplied in repo for brief idea.
+
+LIST OF SKETCH IN THIS REPO
+----------------------------
+- Simple Pre-defined single Timezone for LOCAL GPS .
+- Manual Rotary Cycled 40 Timezone ( UTC/DST)
+- Auto Timezone/DST Decoder by valid coordinate (lo-res).
+- FUTURE Hi-rsolution decoding includes colors recognition on bmp file(World Timezone Map) in SD card by valid coordinate.(not sure how yet)
 
 TIMEZONE LIST
 -----------------
@@ -54,3 +63,5 @@ https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
 - 36	UTC+12:45, 	
 - 37	UTC+13:00, 	
 - 38	UTC+14:00,    
+
+ - Given the complexity of how timeworks, there are likely errors and inconsistencies with most/all of these and none of this data should be considered “official”.
