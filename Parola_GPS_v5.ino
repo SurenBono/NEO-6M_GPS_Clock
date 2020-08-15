@@ -1,12 +1,12 @@
 /*
-Simple +8 UTC GPS Clock
-LedMatrix(FC16)+ NEO-6M + SMD UNO + UNO SCREW SHIELD = SOMEWHAT CHEAPEST/SIMPLE STRATUM 1 NON-DST +8 PRECISION GPS CLOCK
+Simple +8 UTC GPS Clock 
+LedMatrix(FC16)+ NEO-6M + SMD UNO  = SOMEWHAT CHEAPEST/SIMPLE STRATUM 1 NON-DST +8 PRECISION GPS CLOCK
 Devoloped by http://srotogargees.business.site/
 
  ** Version 5 (+8 UTC GPS Clock) MEGA,UNO & NANO Compatible**
  
  - 12-H AM/PM version omitted <10 Hour leading Zero 
- - Note: AM/PM CLOCK + DATE + Satelite Dish icon.
+ - New Addition: AM/PM CLOCK + DATE + Satelite Dish icon.
  - PRECISION = +/- 1 Second on lock vs MCU processing speed + display latency.
  - HI-Clock Accuracy compared to NTP >= +/- 500 Millis ~ 1 Second.
  - Allow few minutes,place GPS near windows for fast sat lock. 1 to 5 min for more accurate adjustments (auto)
@@ -44,7 +44,6 @@ Devoloped by http://srotogargees.business.site/
 //VCC 5v
 //GND
 
-
 int counter = 17; //start from UTC 0,CCW=UTC-1&counter=14 ,CW=UTC+1 & counter=16
 int aState;
 int aLastState;  
@@ -58,33 +57,31 @@ MD_Parola P = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
 NMEAGPS gps;  
 gps_fix fix;  
 uint8_t fixCount;
-NeoSWSerial serialgps(A5,0);	//NEOTX->UNOSS*RX,NEORX<-UNOSS*TX
+NeoSWSerial serialgps(A5,0);	// Only 3 wire from Neo-6m TX,VCC & GND
 
-int h;  	//  Global localised variable declaration for 12-hour AM/PM format
+int h;  	// variable declaration for 12-hour AM/PM format
 int m;		// Minute variable declaration
 int s;		// Second variable declaration
 int d;		// date
 int mth;  	// month
-int y;      // year
+int y;      	// year
 
-String Mdn;	//  Variable Meridian AM/PM
+String Mdn;	//  Variable Meridian AM/PM simplified to A/P
 
 const uint16_t ONE_SEC = 1000;
 const int32_t zone_hours= +8L; 	// Change to your Timezone for non-Daylight Saving zone
 
 
-char Time [] = ":00:00";       //  no leading zero for Hour array
-//char Mnt  [] = ":00";
-//char Secd [] = "00";
+char Time [] = ":00:00";       //  no leading zero for Hour only array
 
 void setup(void)
 {
   //Serial.begin(9600);			    // experimented 1st on serial monitor before migrating to FC-16 & TFT
   serialgps.begin(9600); 		    // Neo SwSerial init
-  P.begin();				        // Parola lib init
-  P.setFont(ExtASCII);              // Use Custom fonts in "Parola_Sat_Font.h"
-  P.setIntensity(0);			    // Lowest LED brightness
-  P.setTextAlignment(PA_CENTER);	// Centered display
+  P.begin();				    // Parola lib init
+  P.setFont(ExtASCII);                      // Init Custom fonts in "Parola_Sat_Font.h"
+  P.setIntensity(0);			    // Lowest LED brightness for 3v3 power efficiency
+  P.setTextAlignment(PA_CENTER);	    // Centered display
   P.print("GPS CLOCK");
   delay(ONE_SEC);
  
@@ -116,21 +113,18 @@ void printGPSdata()
 { 
   
   if (fix.valid.time&&fix.dateTime.hours>11)
-  {h=fix.dateTime.hours-12;Mdn=(char(143));}else{h=fix.dateTime.hours;Mdn=(char(141));}
-  if (fix.valid.time&&fix.dateTime.hours==0||h==0) {h=12;}
+  {h=fix.dateTime.hours-12;Mdn=(char(143));}else{h=fix.dateTime.hours;Mdn=(char(141));}      // 5 row 3 col font for A/P (am/pm)
+  if (fix.valid.time&&fix.dateTime.hours==0||h==0) {h=12;}				     // Code coverts 24h to 12 h format
   m=fix.dateTime.minutes;
   s=fix.dateTime.seconds;
   if (fix.valid.date) {d= fix.dateTime.date ;mth=fix.dateTime.month ;y=fix.dateTime.year;}
-  //if(h<10){Time[0] = ' ';}else	//omits hours only <10 leading zero, make efficient for solar power batteries..useless data
-  //Time[0]  = h / 10 +'0';  
-  //Time[1]  = h % 10 +'0';
-	Time[1]  = m  / 10 +'0';
-	Time[2]  = m  % 10 +'0';	
+
+    Time[1]  = m  / 10 +'0';
+    Time[2]  = m  % 10 +'0';	
     Time[4]  = s  / 10 +'0';
     Time[5]  = s  % 10 +'0';
-  //P.setTextAlignment(PA_CENTER);
-  //if (fix.valid.location){P.print( Mdn + h + Time + (char(173))+ d +(char(183))+ mth + (char(183))+ y);}else
-	P.print( Mdn + h + Time + (char(157))+ d +(char(183))+ mth + (char(183))+ y);//fit 2 x 4 LED Matrix
+
+   P.print( Mdn + h + Time + (char(157))+ d +(char(183))+ mth + (char(183))+ y);            // Fills 8 col x 4 x 2 LED Matrix
 	
 }
 // end of code.
