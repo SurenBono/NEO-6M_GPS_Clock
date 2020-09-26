@@ -3,7 +3,7 @@
    FX GPS Clock + Weekday decoder via valid GPS date (localised calculation) 
 
 - A rare sketch Since Weekday are not included in NMEAGPS . Originally written by Eric Sitler 30August2016
-- Mod to your timezone line 59
+- Mod to your timezone line 61
 - Add prefered FX 
 
 */
@@ -33,10 +33,10 @@ gps_fix fix;
 uint8_t fixCount;
 NeoSWSerial serialgps(A5,0);
 
-short h;  	          //  Global localised variable declaration for 12-hour AM/PM format
-short m;		      // Minute variable declaration
-short s;		      // Second variable declaration
-short d;		      // date
+short h;  	      //  Global localised variable declaration for 12-hour AM/PM format
+short m;	      // Minute variable declaration
+short s;              // Second variable declaration
+short d;	      // date
 short mth;  	      // month   
 short yy;             // Last 2 digits of the year (ie 2016 would be 16)
 short yyyy;           // Year Entry
@@ -47,8 +47,8 @@ short DoW;            // Day of the week value (0-6)
 short leap;           // Leap Year or not
 short cTable;         // Century value based on calculation table
 short i=0;            // Array shifter count
-short counter=0;	  // Animation control count
-String Mdn;     	  // Variable AM/PM
+short counter=0;      // Animation control count
+String Mdn;           // Variable AM/PM
 String DAYX;          // Stringyfied strftime later charred for display justification Parola rules.
 String TIMEX;
 String DATEX;
@@ -58,9 +58,9 @@ char datexx[15];
 
 const char *GPS[3]={dayxx,timexx,datexx};    //Arrays sequences in Pointed Array style
 const uint16_t ONE_SEC = 1000;               // Parola did not respond to delay(1000)
-const int32_t zone_hours= +8L; 	// Covert Timezone into seconds ,60 sec * 60 min * Timezone rule
+const int32_t zone_hours= +8L; 	             // Covert Timezone into seconds ,60 sec * 60 min * Timezone rule
 
-char Time [] = ":00:00";        // Minute & Second array , no leading zero Hour rule
+char Time [] = ":00:00";                     // Minute & Second array , no leading zero Hour rule
 
 void setup(void)
 {
@@ -110,8 +110,8 @@ void printGPSdata()
  
 	Time[1]  = m  / 10 +'0';
 	Time[2]  = m  % 10 +'0';	
-    Time[4]  = s  / 10 +'0';
-    Time[5]  = s  % 10 +'0';
+        Time[4]  = s  / 10 +'0';
+        Time[5]  = s  % 10 +'0';
     
 	String H=String(h); TIMEX=Mdn+H+Time;   //Align Clock and combine int&char into a string
 	
@@ -157,7 +157,7 @@ void printGPSdata()
 	DATEX+=".";
 	DATEX+=String(mth);
 	DATEX+=".";
-    DATEX+=String(yyyy);
+        DATEX+=String(yyyy);
  
  Serial.print(DAYX);Serial.print(" ,");Serial.print(TIMEX);Serial.print(" ,");Serial.println(DATEX);
  DAYX.toCharArray(dayxx, 15);TIMEX.toCharArray(timexx, 15);DATEX.toCharArray(datexx, 15);//Coverts string toCharArray
