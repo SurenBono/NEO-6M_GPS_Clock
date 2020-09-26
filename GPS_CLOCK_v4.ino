@@ -85,7 +85,6 @@ void adjustTime( NeoGPS::time_t & dt )
 } 
 
 void loop(){
-  
 if (gps.available( serialgps ))
   { 
     fix = gps.read();fixCount++;
@@ -97,10 +96,8 @@ if (gps.available( serialgps ))
   }while (!P.displayAnimate());		// Parola FX command
 }
 
-
-void printGPSdata()
-{ 
- 
+void printGPSdata(){ 
+	
   if (fix.valid.time&&fix.dateTime.hours>11){h=fix.dateTime.hours-12;Mdn="PM ";}
   else{h=fix.dateTime.hours;Mdn="AM ";}
   if (fix.valid.time&&fix.dateTime.hours==0||h==0) {h=12;}
