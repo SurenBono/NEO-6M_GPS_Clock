@@ -1,9 +1,9 @@
 
 /*
    FX GPS Clock + Weekday decoder via valid GPS date (localised calculation) 
-
+- Version 8 adds blinking seperator 1/2 seconds check video
 - A rare sketch Since Weekday are not included in NMEAGPS . Originally written by Eric Sitler 30August2016
-- Mod to your timezone line 36
+- Mod to your timezone line 37
 - Add prefered FX 
 - https://pjrp.github.io/MDParolaFontEditor
 */
@@ -89,13 +89,13 @@ void printGPSdata()
   s=fix.dateTime.seconds;
   if (fix.valid.date) {d= fix.dateTime.date ;mth=fix.dateTime.month ;yyyy=fix.dateTime.year;}
  
-	    Time[1]    = m  / 10 +'0';
-	    Time[2]    = m  % 10 +'0';	
+      Time[1]    = m  / 10 +'0';
+      Time[2]    = m  % 10 +'0';	
       Time[4]    = s  / 10 +'0';
       Time[5]    = s  % 10 +'0';
 	  
-	    Time_b[1]  = m  / 10 +'0';
-	    Time_b[2]  = m  % 10 +'0';	
+      Time_b[1]  = m  / 10 +'0';
+      Time_b[2]  = m  % 10 +'0';	
       Time_b[4]  = s  / 10 +'0';
       Time_b[5]  = s  % 10 +'0';
     
@@ -144,7 +144,7 @@ void printGPSdata()
 	DATEX+=".";
 	DATEX+=String(mth);
 	DATEX+=".";
-  DATEX+=String(yyyy);
+        DATEX+=String(yyyy);
 
  //LOGO = (char(127))+UTC + zone_hours+" "+(char(129)); 
  LOGO.toCharArray(logo, 15);
@@ -160,27 +160,27 @@ P.setTextAlignment(PA_LEFT);
 switch (i) 
   {
      case 1 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 2 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 3 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 4 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 5 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 6 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
+     case 3 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 4 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
+     case 5 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 6 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 7 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 8 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 9 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 10:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 11:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 12:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
+     case 9 :P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 10:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
+     case 11:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 12:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 13:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 14:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 15:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 16:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 17:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 18:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
+     case 15:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 16:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
+     case 17:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 18:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 19:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 20:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 21:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 22:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 23:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 24:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 25:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 26:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
+     case 23:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 24:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
+     case 25:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 26:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 27:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 28:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 29:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 30:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 31:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 32:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
+     case 29:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 30:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
+     case 31:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 32:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 33:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 34:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 35:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 36:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
-	   case 37:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 38:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
+     case 35:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 36:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  
+     case 37:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 38:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;
      case 39:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY);break;  case 40:P.print(TIMEX);delay(HALF_SEC);P.print(TIMEY+"    ");break;
 	 
-	   case 41:P.displayText(dayxx,PA_CENTER ,30,0, FX[0], FX[0]);break;
+     case 41:P.displayText(dayxx,PA_CENTER ,30,0, FX[0], FX[0]);break;
      case 42:P.displayText(timexx,PA_LEFT  ,15,25, FX[2], FX[1]);break;
      
      default:P.print(TIMEX);
