@@ -54,7 +54,7 @@ void setup(void)
   P.setIntensity(0);			        
   P.setTextAlignment(PA_CENTER);	    
   P.print("S&G GPS");                     
-  Serial.println("S&G GPS Clock v7");
+  Serial.println("S&G GPS Clock v8.2");
   delay(ONE_SEC);						
   P.displayClear();
 }
