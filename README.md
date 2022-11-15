@@ -20,6 +20,7 @@ LIST OF SKETCH IN THIS REPO
 - Manual Rotary Cycled 40 Timezone ( UTC/DST)
 - Auto Timezone/DST Decoder by valid coordinate (lo-res).
 - FUTURE Hi-rsolution decoding includes colors recognition on bmp file(World Timezone Map) in SD card by valid coordinate.(not sure how yet)
+- Tested espnow.h for esp8266 for wireless,router less,non-internet based Stratum 1 to 2 Gps Clock broadcast to multiple receivers Ledmatrix display (sync redundancy check).A single data processing transmitter could support at least 2 device in a close b/g/n range.Max is >5 device.. 
 
 TIMEZONE LIST
 -----------------
