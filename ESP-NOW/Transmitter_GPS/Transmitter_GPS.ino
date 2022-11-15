@@ -2,7 +2,7 @@
 // Neo-6M Tx --> esp Rx ( Fast HW serial)
 // Connect Tx --> Rx after uploading + reset
 // Minimalist Serial monitor activity, reports 1 if no device detected yet
-// It takes hours to get a fix sometimes but once locked it flows..
+// It takes hours to get a fix sometimes but once locked it flows..place near windows for faster transmitter clock fix/auto adjustments 
 // The objective of this project is to sync all Clock on the receiver side.
 
 #include <Arduino.h>          // the libs are arranged in this sequence or it errors
