@@ -1,4 +1,7 @@
-// ESP-NOW ESP8266 TRANSMITTER
+// ESP-NOW ESP8266 GPS TRANSMITTER
+// Neo-6M Tx --> esp Rx ( Fast HW serial)
+// Connect Tx --> Rx after uploading + reset
+// Minimalist Serial monitor activity, reports 1 if no device detected
 
 #include <Arduino.h>          // the libs are arranged in this sequence or it errors
 #include <ESP8266WiFi.h>
