@@ -4,6 +4,7 @@
 // Minimalist Serial monitor activity, reports 1 if no device detected yet
 // It takes hours to get a fix sometimes but once locked it flows..place near windows for faster transmitter clock fix/auto adjustments 
 // The objective of this project is to sync all Clock on the receiver side.
+// Preview https://youtu.be/Evq018rAHy0
 
 #include <Arduino.h>          // the libs are arranged in this sequence or it errors
 #include <ESP8266WiFi.h>
