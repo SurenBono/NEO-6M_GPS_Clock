@@ -1,6 +1,4 @@
 // ESP-NOW ESP8266 GPS TRANSMITTER
-// Neo-6M Tx --> esp Rx ( Fast HW serial)
-// Connect Tx --> Rx after uploading + reset
 // Minimalist Serial monitor activity, reports 1 if no device detected yet
 // It takes hours to get a fix sometimes but once locked it flows..place near windows for faster transmitter clock fix/auto adjustments 
 // The objective of this project is to sync all Clock on the receiver side.
@@ -9,6 +7,7 @@
 #include <Arduino.h>          // the libs are arranged in this sequence or it errors
 #include <ESP8266WiFi.h>
 #include <espnow.h>
+#include <SoftwareSerial.h> 
 #include "TimeLib.h"          // add these lib into project folder if possible 
 #include "TinyGPSPlus.h"      
 
@@ -27,6 +26,8 @@ typedef struct message {
 TinyGPSPlus gps;
 struct message myMessage;
 
+SoftwareSerial NEO(13,15);  //Esp (RX,TX)--> NEO TX(EspRX2,13/D7),NEO RX(EspTX2,15/D8)
+
 void onSent(uint8_t *mac_addr, uint8_t sendStatus) {
   Serial.println(sendStatus);
 }
@@ -34,6 +35,7 @@ void onSent(uint8_t *mac_addr, uint8_t sendStatus) {
 void setup() {
 
   Serial.begin(9600);
+  NEO.begin(9600);
   WiFi.mode(WIFI_STA);
   Serial.println("Transmitter");
 
@@ -52,9 +54,9 @@ void setup() {
 
 void prn_GPS_Local()
 {
-  while (Serial.available() > 0)
+  while (NEO.available() > 0)
   {
-    if (gps.encode(Serial.read()))
+    if (gps.encode(NEO.read()))
     {
       if (gps.time.isValid())
       {
