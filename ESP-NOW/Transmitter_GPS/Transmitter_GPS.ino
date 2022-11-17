@@ -125,6 +125,6 @@ void loop() {
 
   prn_GPS_Local();
   transmit() ;
-  delay(500);   // Stratum 2 gets at least 500 millis updates 
+  delay(100);   // 100 millis apart from Stratum 1 , unstable broadcast beyond this , supports <10 device reception 
 }
 // end of code
