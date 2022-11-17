@@ -79,36 +79,17 @@ void prn_GPS_Local()
         setTime(Hour, Minute, Second, Day, Month, Year);
         adjustTime(time_offset * SECS_PER_HOUR);
 
-        if (weekday() == 1) {
-Serial.print("Sunday");
-    }
-        if (weekday() == 2) {
-Serial.print("Monday");
-    }
-        if (weekday() == 3) {
-Serial.print("Tuesday");
-   }
-        if (weekday() == 4) {
-Serial.print("Wednesday");
- }
-        if (weekday() == 5) {
-Serial.print("Thursday");
-  }
-        if (weekday() == 6) {
-Serial.print("Friday");
-    }
-        if (weekday() == 7) {
-Serial.print("Saturday");
-  }
+        if (weekday() == 1) {Serial.print("Sunday");}
+        if (weekday() == 2) {Serial.print("Monday"); }
+        if (weekday() == 3) {Serial.print("Tuesday"); }
+        if (weekday() == 4) {Serial.print("Wednesday");}
+        if (weekday() == 5) {Serial.print("Thursday"); }
+        if (weekday() == 6) {Serial.print("Friday"); }
+        if (weekday() == 7) {Serial.print("Saturday"); }
 
         Serial.print("  ");
-        if (isAM()) {
-          myMessage.M = 0;
-          Serial.print("AM");
-        } else {
-          myMessage.M = 1;
-          Serial.print("PM");
-        }
+        if (isAM()) {myMessage.M = 0;Serial.print("AM"); } else { myMessage.M = 1;Serial.print("PM");  }
+
         Serial.print(" ");
         Serial.print(hourFormat12());Serial.print(":");
         if (minute() < 10)Serial.print('0'); Serial.print(minute());Serial.print(":");
