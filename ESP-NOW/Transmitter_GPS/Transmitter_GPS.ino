@@ -125,6 +125,6 @@ void loop() {
 
   prn_GPS_Local();
   transmit() ;
-  delay(1000);
+  delay(500);   // Stratum 2 gets at least 500 millis updates 
 }
 // end of code
