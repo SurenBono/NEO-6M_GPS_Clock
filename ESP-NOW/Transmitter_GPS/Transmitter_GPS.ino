@@ -11,7 +11,7 @@
 #include "TimeLib.h"          // add these lib into project folder if possible 
 #include "TinyGPSPlus.h"      
 
-#define time_offset   8.      // Adjust to your timezone
+#define time_offset   8       // Adjust to your timezone
 
 uint8_t peer1[] = {0x80, 0xXX, 0x3A, 0xXX, 0xF7, 0xX6};  // Find & add your device MAC
 uint8_t peer2[] = {0xXC, 0xF4, 0x32, 0xXX, 0xX5, 0xC6};  // 
