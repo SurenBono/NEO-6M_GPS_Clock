@@ -21,7 +21,7 @@ textEffect_t FX[] ={PA_SCROLL_LEFT,PA_PRINT,PA_SCROLL_RIGHT};
 String mr,hr,mn,sec,sat=String(char(127)),t,t1,Dayname,SaT=String(char(129)),utc="UTC+8 "+SaT;
 char T[15],dd[30];
 const char *GPS[2]={T,dd};
-int i;
+int i,cs,ps;
 
 char Time []   = ":00:00"; 
 char Time_b [] = " 00 00";  
@@ -62,16 +62,18 @@ memcpy(&myMessage, incomngData, sizeof(myMessage));
   if (myMessage.W==6){Dayname="Friday";}
   if (myMessage.W==7){Dayname="Saturday";}
   
-      Time[1]    = myMessage.m / 10 +'0';
+  cs=myMessage.s;
+  if(cs != ps){
+      Time[1]    = myMessage.m  / 10 +'0';
       Time[2]    = myMessage.m  % 10 +'0';  
-      Time[4]    = myMessage.s / 10 +'0';
-      Time[5]    = myMessage.s % 10 +'0';
+      Time[4]    = cs           / 10 +'0';
+      Time[5]    = cs           % 10 +'0';
     
       Time_b[1]  = myMessage.m  / 10 +'0';
       Time_b[2]  = myMessage.m  % 10 +'0';  
-      Time_b[4]  = myMessage.s / 10 +'0';
-      Time_b[5]  = myMessage.s  % 10 +'0';
-	  
+      Time_b[4]  = cs           / 10 +'0';
+      Time_b[5]  = cs           % 10 +'0';
+ } cs=ps;
   
   Serial.print(Dayname);
   Serial.print("  ");
@@ -119,7 +121,7 @@ switch (i)
      case 37:P.print(t);delay(500);P.print(t1);delay(500);break;  case 38:P.print(t);delay(500);P.print(t1);delay(500);break;
      case 39:P.print(t);delay(500);P.print(t1);delay(500);break;  case 40:P.print(t);delay(500);P.print(t1+"    ");break;
    
-     case 41:P.displayText(dd,PA_CENTER ,17,0, FX[0], FX[0]);break;
+     case 41:P.displayText(dd,PA_CENTER ,20,0, FX[0], FX[0]);break;
      case 42:P.displayText(T,PA_LEFT  ,10,25, FX[2], FX[1]);break;
      
      default:P.print(t);
