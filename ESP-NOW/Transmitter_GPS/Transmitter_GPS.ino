@@ -108,8 +108,9 @@ Serial.print("Saturday");
           myMessage.M = 1;
           Serial.print("PM");
         }
-        Serial.print(hourFormat12());
-        if (minute() < 10)Serial.print('0'); Serial.print(minute());
+        Serial.print(" ");
+        Serial.print(hourFormat12());Serial.print(":");
+        if (minute() < 10)Serial.print('0'); Serial.print(minute());Serial.print(":");
         if (second() < 10)Serial.print('0'); Serial.print(second());
         Serial.print("  ");
         Serial.print(day());
