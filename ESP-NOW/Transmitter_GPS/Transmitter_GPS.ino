@@ -5,7 +5,7 @@
 // Preview https://youtu.be/Evq018rAHy0
 // https://youtu.be/HKpepkdoFHM
 
-#include <Arduino.h>          // the libs are arranged in this to avoid errors
+#include <Arduino.h>          // the libs are arranged in this sequence to avoid errors
 #include <ESP8266WiFi.h>
 #include <espnow.h>
 #include <SoftwareSerial.h> 
