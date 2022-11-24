@@ -63,7 +63,7 @@ memcpy(&myMessage, incomngData, sizeof(myMessage));
   if (myMessage.W==7){Dayname="Saturday";}
   
   cs=myMessage.s;
-  if(cs != ps){
+  if(cs != ps){.   // Add more transmitter for stability 
       Time[1]    = myMessage.m  / 10 +'0';
       Time[2]    = myMessage.m  % 10 +'0';  
       Time[4]    = cs           / 10 +'0';
