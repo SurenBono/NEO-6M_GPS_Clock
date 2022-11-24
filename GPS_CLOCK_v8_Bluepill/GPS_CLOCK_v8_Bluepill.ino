@@ -1,6 +1,7 @@
 
-/*
-   FX GPS Clock + Weekday decoder via valid GPS date (localised calculation) on stm32f103c8t6 aka "BLUEPILL"
+/* STM32 Bluepill Not Recommended,the module only worked once and a piece of trash by now..
+   
+FX GPS Clock + Weekday decoder via valid GPS date (localised calculation) on stm32f103c8t6 aka "BLUEPILL"
 
 - A rare sketch Since Weekday are not included in NMEAGPS . Originally written by Eric Sitler 30August2016
 - Mod to your timezone line 36
