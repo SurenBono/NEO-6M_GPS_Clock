@@ -171,7 +171,7 @@ void printGPSdata()
    
  LOGO.toCharArray(logo, 15);
  
- Serial.print(TIMEZ);Serial.print(" ,");Serial.print(DAYX);Serial.print(" ,");Serial.print(DATEX);
+ Serial.print(TIMEZ);Serial.print(" ,");Serial.print(DAYX);Serial.print(" ,");Serial.println(DATEX);
  DAYX+="    "+ DATEX +"  "+LOGO; DAYX.toCharArray(dayxx,55);
  TIMEX.toCharArray(timexx, 15);
  sequences();
